@@ -1,0 +1,11 @@
+.list-group{
+    margin: 100px;
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.42);
+    padding: 20px;
+    background-color: rgb(93, 117, 158);
+}
+.list-group li{
+    font-size: 1.3rem;
+    font-weight: bold;
+}

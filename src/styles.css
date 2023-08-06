@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Bruno+Ace&family=Dancing+Script:wght@400;600&family=Freehand&family=Fugaz+One&family=Gloria+Hallelujah&family=Kaushan+Script&family=Lobster+Two:ital,wght@0,400;1,700&family=Marck+Script&family=Merriweather&family=Monoton&family=Montserrat:wght@500&family=Mukta&family=PT+Sans&family=Pacifico&family=Rajdhani&family=Russo+One&family=Satisfy&family=Tangerine:wght@700&family=Ysabeau:wght@500&display=swap');
+h1{
+    font-family: 'Bacasime Antique', serif;
+    font-size: 4rem;
+}
+h3{
+   font-family: 'Times New Roman', Times, serif;
+   margin-top: 50px;
+}
+form{
+    margin: 50px;
+    margin-top: 0;
+    padding: 30px;
+    background-color: rgb(93, 117, 158);
+    border-radius: 2rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.616);
+}

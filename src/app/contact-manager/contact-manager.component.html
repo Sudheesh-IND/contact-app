@@ -1,0 +1,74 @@
+<!-- <h6>Login Details: {{loginDate|date:'medium'}}</h6> -->
+<div class="container">
+    <div class="row">
+       <div class="col-md-12 text-center">
+        <!-- {{contactDetails|json}} -->
+        <!-- {{heading}} -->
+        <h1 style="letter-spacing: 4px;">CONTACT MANAGEMENT APPLICATION</h1>
+        <p class="mt-4" style="background-color: aliceblue; box-shadow: 0 0 30px rgba(0, 0, 0, 0.477);">The history of contact management stretches back to Rolodex and Filofax systems, developing into desktop-based standalone software and email clients with built-in contact management functionality.
+
+            Despite these significant technical advances, many businesses find that their contact management systems fundamentally amount to little more than a simple database containing names, phone numbers and notes</p>
+       </div>
+       <div class="col-md-4 text-center mt-4">
+        
+       </div>
+    </div>
+    <div class="row" >
+        <div class="col-md-12 text-center">
+            <div class="row">
+                <div class="col-12 text-center">
+                  <input (keyup)="searchItem($event)"  type="text" placeholder="search" > <br>
+                  <!-- <button  class=" search-btn ml-3 mt-3">SEARCH</button> <br> -->
+                  <button class="add-btn mt-4" routerLink="/contactManager/addContact">ADD CONTACT</button>
+
+                </div>
+            </div>
+            <!-- //searchbar -->
+            
+        </div>
+    </div>
+    <div class="row" style="margin: 20px;">
+      <!-- for looping the contact details -->
+        <div class="card col-md-6 " *ngFor=" let contact of contactDetails|search:searchKey:'name'"> 
+           <div class="row">
+        
+            
+                <div class="col-md-4 text-center">
+                    <img height="200px" style="width: 200px;" [src]="contact.photo" alt="">
+                </div>
+                <div class="col-md-8">
+                    <ol class="list-group list-group-numbered border-0 outline-0" style="width: 100%;">
+                        <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Name</div>
+                            {{contact.name}}
+                          </div>
+
+                          <!-- view -->
+                          <span class="badge bg-dark rounded-pill"><a routerLink="/contactManager/view/{{contact.id}}"><i class="fa-solid fa-eye p-2"></i></a></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Phone no</div>
+                            {{contact.phone}}
+                          </div>
+                         
+                          <!-- edit -->
+                          <span class="badge bg-dark rounded-pill"><a routerLink="/contactManager/edit/{{contact.id}}"><i class="fa-solid fa-pen-to-square p-2"></i></a></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-start border-0">
+                          <div class="ms-2 me-auto">
+                            <div class="fw-bold">Mail Id</div>
+                            {{contact.email}}
+                          </div>
+                          <!-- delete -->
+                          <span (click)="deleteContact(contact.id)" class="badge bg-dark rounded-pill"><a routerLink=""><i class="fa-solid fa-trash p-2"></i></a></span>
+                        </li>
+                      </ol>
+                </div>
+           
+           </div>
+        </div>
+    </div>
+</div>
+

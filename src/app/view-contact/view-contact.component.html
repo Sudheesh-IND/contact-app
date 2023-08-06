@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row" style="margin-bottom: 80px;">
+          
+        <div class="col-md-6 ">
+            
+            <ul class="list-group border-0">
+                <li class="list-group-item border-0">Full Name: {{viewSpecific.name}}</li>
+                <li class="list-group-item  border-0">Phone Number: {{viewSpecific.phone}}</li>
+                <li class="list-group-item  border-0">Email: {{viewSpecific.email}}</li>
+                <li class="list-group-item  border-0">Title: {{viewSpecific.title}}</li>
+                <li class="list-group-item  border-0">Company: {{viewSpecific.company}}</li>
+                <li class="list-group-item  border-0">Category: {{groupName}}</li>
+                <li class="list-group-item  border-0">
+                    <button routerLink="/" class="btn btn-danger">Go Back</button>
+                </li>
+              </ul>
+        </div>
+        <div class="col-md-6 text-center ">
+           <img style="margin-top: 100px;" [src]="viewSpecific.photo" alt=""> 
+        </div>
+    </div>
+   
+</div>

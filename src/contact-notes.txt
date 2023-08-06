@@ -1,0 +1,221 @@
+
+CONTACT MANAGEMENT system
+
+1. Create a new project: ng new contact app
+2.Run the project: ng serve --open
+3.Clear the code in app.component.html
+4.Install third party libraries like bootstrap,font awesome,
+google fonts
+
+     Install bootstrap-npm i bootstrap
+     .................................
+After installing bootstrap go to node modules then go to bootstrap folder and then go to bootstrap.min.css
+then copy the path 
+        "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              
+            ],
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+            ]
+
+
+            then paste the bootstrap link on index.css
+           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+        Install font awesome
+........................................
+        npm install --save @fortawesome/fontawesome-free
+        then paste cdn link on index.html
+
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+         install google fonts
+         ....................
+  copy the import link from the google fonts and place it on the style.css
+
+
+  5.create html page
+
+  contact manager-view all contact- ng g c contactManager
+  add contact-add new contact-ng g c addContact
+  view contact-view particular contact-nf f c viewContact
+  Edit contact-edit specific contact-ng g c editContact
+
+
+  6.Setting up path for each component-routing
+
+  inside app-routing.module.ts
+  //localhost:4200/contactManager
+
+  {
+    path:'', //this is the main path
+    redirectTo:'contactManager',pathMatch:'full'
+    this is just a redirection
+  }
+  ,
+  giving other paths
+  {
+    path:'contactManager',component:ContactManagerComponent
+  }
+
+  7.<router-outlet></router-outlet>
+  page to view requested components
+
+  8.design full pages
+
+  9.API Integration
+
+  fetch data and display
+ > Create a server folder
+ >crate it,crate a sever folder in src and create db.json file
+ >go to json placeholder -my json data-content
+
+ >create package.json inside server folder--- npm Initial
+ update package.json inside script as
+     "start": "json-server --watch db.json --port 3000"
+
+
+>install npm i json server
+>run backened--- npm start
+
+10.Create a model
+
+-create a model folder in  src folder
+-inside in it create my contact.ts filte and my group.ts file
+-export the class inside each file
+export class MyContact{
+    id?:string
+    name?:string
+    phone?:string
+    company?:string
+    email?:string
+    photo?:string
+    title?:string
+    groupId?:string
+    
+}
+
+starting of fetching the api.......
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+11.create services
+services-pass data from one component to another component
+        id differnet documents contain same data then we use
+        to create a service
+
+ng d s services-name=> ng g s services/api
+
+12.Asynchronous resolving
+
+  JS               ts
+promise         observable (from rxjs library)
+.then            .subscribe
+.catch           .catch
+
+then and subscribe always will be a call back function
+
+we use observable in place of java script in type script
+
+rxjs-Reactive extension javascript
+
+display all contact API
+create view contact API
+create edit contact API
+delete contact api
+
+13.to get htttp methods for api fetching
+  import http client module inside api.services
+  import{HttpClientModule} from'@angular/common/http'
+
+  import[
+    HttpClientModule
+  ]
+
+14.Dependency Injection
+   data share between two dependent classes
+   -It performs inside the constructor
+   construcctor-Special member function it executes first
+
+   syntax for DI-constructor(access-specifier variable-name:class name){}
+   access-specifier indicates who can access the constructior public or private
+
+15.ng oninit-It is a lifecycle hook
+   -starting stage of a component creation
+
+   inside on init
+   ..............
+   ngOnInit(): void {
+    //this is a refernce variable used to refer class and object
+
+     this.api.allContact().subscribe((data:MyContact)=>{
+       console.log(data)
+     })
+  }
+
+  thuss the values are printed on the console
+
+  16.Data Binding
+  ..................
+  Datas sharing inside a component-ts to html or html to ts
+   =>one way data binding(ts to html or html to ts)
+      1.Component to view(ts to html)
+        *string interpolation-{{variable-name}}(inside html)
+        *property Binding-[attribute nme]="property name"
+
+      2.view to component(html to ts)
+         *Event Binding
+
+         Events=>things happening to html elements when loading
+         eg: onclick,onfocus,onmouseover etc
+
+         *event binding using $event-$event is used in function argument
+         -(event-name)="function-name($event)" (html)
+         -function-name(event) (ts)
+
+   =>two way data binding
+   ......................
+   ->ngModel [(ngModel)]="propertyName"
+   -ngModel imports in app.module.ts-formsModule
+   - Creates a FormControl instance from a domain model
+    and binds it to a form control element.
+   - placed inside input Tag
+   -name attribute is also given
+
+  17.Directives-To manipulate dom
+       1.component Directives
+       2.structural Directives
+          *ngif==condition
+          *ngfor==let varname of array name
+           
+  18.fetching data using url id
+  .............................
+    ActivatedRoute
+    .............
+
+Provides access to information about a route associated 
+with a component that is loaded in an outlet. Use to traverse the
+ RouterState tree and extract information from nodes.
+
+ parameters
+ ..........
+ an observable of the matrix parameter scoped to this route
+
+ fetching group
+ ..............
+
+ Tansforming data using pipes
+ ............................
+ Pipes are simple functions to use in template expressions 
+ to accept an input value and return a transformed value
+
+ examples:
+ DatePipe=>	Formats a date value according to locale rules.
+ UpperCasePipe=>	Transforms text to all upper case.
+
+ creating a pipe for searching
+ .............................
+ creation=> ng g p pipes/search
